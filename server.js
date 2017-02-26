@@ -14,10 +14,11 @@ MongoClient.connect('mongodb://ibadpc:mlab@ds161069.mlab.com:61069/with-express'
     if(err) return console.log(err);
 
     db = database;
-    var server = app.listen(9000, function () {
+    var server = app.listen(process.env.PORT || 9000, function () {
         console.log('Listening on port %s', server.address().port);
     });
 });
+
 
 app.get('/', function (req, res) {
     var cursor = db.collection('quotes').find();
